@@ -7,11 +7,10 @@ import { Videos, Sidebar } from "./";
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState(null);
-
+  
   useEffect(() => {
     setVideos(null);  
-
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}&maxResults=5`)
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
     }, [selectedCategory]);
 
@@ -21,7 +20,7 @@ const Feed = () => {
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         
         <Typography className="copyright" variant="body2" sx={{ mt: 1.5, color: "#fff", }}>
-          Copyright © 2022 JSM Media
+          Copyright © 2023
         </Typography>
       </Box>
 
